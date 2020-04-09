@@ -1,7 +1,6 @@
 const express = require("express");
 
 const Shouts = require("../shouts/shouts-model.js");
-
 const router = express.Router();
 
 router.use(express.json());
@@ -11,9 +10,10 @@ router.get("/", (req, res) => {
 });
 
 router.get("/shouts", (req, res, next) => {
+  const message = process.env.MOTD
   Shouts.find()
     .then(shouts => {
-      res.status(200).json(shouts);
+      res.status(200).json(message , shouts);
     })
     .catch(error => next(error));
 });

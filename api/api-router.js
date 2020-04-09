@@ -13,7 +13,7 @@ router.get("/shouts", (req, res, next) => {
   const message = process.env.MOTD
   Shouts.find()
     .then(shouts => {
-      res.status(200).json(message , shouts);
+      res.status(200).json({message , shouts});
     })
     .catch(error => next(error));
 });
